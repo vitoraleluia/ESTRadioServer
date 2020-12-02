@@ -29,7 +29,6 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import estradio.licenca.LicencaNaoSuportaOperacaoExcpetion;
-import estradio.server.Artista;
 import estradio.server.ESTRadioServer;
 import estradio.server.Musica;
 import estradio.server.Utilizador;
@@ -147,10 +146,13 @@ public class ListaMusicas extends JDialog {
 	private void tentaFazerDownload(int linha) {	
 		try {
 			// TODO fazer o download da música 
-			if(utilizador.getMusicasDescarregadas().size() >= utilizador.getLicenca().getNDownloads())
+
+			Musica musicaADescarregar = musicasAListar.get(linha);
+			if(utilizador.getMusicasDescarregadas().size() >= utilizador.getLicenca().getNDownloads() || 
+					!utilizador.getLicenca().podeDownload(musicaADescarregar))
 				throw new LicencaNaoSuportaOperacaoExcpetion();
 
-			utilizador.addMusicasDescarregadas(musicasAListar.get(linha));
+			utilizador.addMusicasDescarregadas(musicaADescarregar);
 
 		} catch( LicencaNaoSuportaOperacaoExcpetion e ) {
 			JOptionPane.showMessageDialog(this, "A sua licença não permite fazer essa operação! Faça upgrade!", "Operação não suportada", JOptionPane.ERROR_MESSAGE);

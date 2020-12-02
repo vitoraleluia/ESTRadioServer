@@ -4,7 +4,6 @@ import estradio.server.Musica;
 
 public class LicencaDefault  implements Licenca{
 
-
 	private String nome;
 
 	private int nivel;
@@ -107,5 +106,13 @@ public class LicencaDefault  implements Licenca{
 		return false;
 	}
 
+	public boolean podeDownload(Musica m) {
+		return true;
+	}
+
+	@Override
+	public boolean podeSaltarMusica(Musica m) {
+		return false;
+	}
 
 }

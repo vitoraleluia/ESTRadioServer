@@ -7,7 +7,6 @@ public interface Licenca {
 	int getNivel();
 	String getNome();
 	int getNDownloads();
-	//void decNDownloads();
 	int[] getAnuncio();
 
 	//Numero de quantos generos/artistas/musicas pode classificar
@@ -22,5 +21,6 @@ public interface Licenca {
 	int getnTotalMusicas();
 
 	boolean podeOuvir(Musica musica);
-
+	boolean podeDownload(Musica m);
+	boolean podeSaltarMusica(Musica m);
 }

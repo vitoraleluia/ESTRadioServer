@@ -140,7 +140,7 @@ public class ESTPlayer extends JFrame {
 	protected void botaoSaltarPremido() {
 		// TODO acabar este m�todo
 		// se se puder saltar a m�sica atual, mkuda-se sen�o apresenta-se uma mensagem de erro
-		if( true /* TODO saber se pode saltar m�sica */ )
+		if( true/* TODO saber se pode saltar m�sica utilizador.getLicenca().podeSaltarMusica(playlist.get(indexMusicaAtual))*/ )
 			mudarMusica();
 		else
 			JOptionPane.showMessageDialog(this, "Queres Saltar uma música? Faz upgrade!!!","Operação não suportada!", JOptionPane.ERROR_MESSAGE );

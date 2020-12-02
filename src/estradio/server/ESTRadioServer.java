@@ -170,8 +170,7 @@ public class ESTRadioServer {
 				switch (info[1]) {
 				case "Grátis":
 					licenca = new Gratis();
-					break;
-					
+					break;			
 				default:
 					licenca = new Simples();
 					break;
@@ -312,7 +311,7 @@ public class ESTRadioServer {
 	public ArrayList<Musica> getMusicasNivel(Licenca l){
 		ArrayList<Musica> musicasNivel = new ArrayList<Musica>();
 		String nomeLicenca = l.getNome();
-
+		System.out.println(nomeLicenca);
 		//Entrega as musicas consoante o nivel
 		switch (nomeLicenca) {
 		case "Grátis":
@@ -324,9 +323,10 @@ public class ESTRadioServer {
 				return musicasNivel = getNivel1a3();
 			}
 		case "Avançada":
-			if(true /*TODO podeOuvir 20 musicas dos niveis 7 ou 8 */) {
+			if(true /*TODO podeOuvir 20 musicas dos niveis 7 ou 8 e 5 do 9 ao 10*/) {
 				// Premium l = new Premium();
-				// return musicasNivel = getNivel1a3();
+				musicasNivel.addAll(musicas);
+				return musicasNivel;
 			}
 			else if ( false/*TODO 5 musicas do nivel superior a 8*/) {
 
@@ -334,11 +334,9 @@ public class ESTRadioServer {
 			else{
 				/*Musicas de 1 a 6*/
 			}
-			break;
 		case "Premium":
-			// Avancada l = new Avancada();
-			// return musicasNivel.addAll(musicas);
-			break;
+			musicasNivel.addAll(musicas);
+			return musicasNivel;
 		}
 
 		return musicasNivel;
@@ -383,9 +381,7 @@ public class ESTRadioServer {
 		int indexAleatorio;
 
 		playlist.addAll(gerarMusicasPlaylist(licenca, musicasMusicasClassificadas, licenca.getnPreferenciasMusicas()));
-		System.out.println(licenca.getnPreferenciasArtistas());
 		playlist.addAll(gerarMusicasPlaylist(licenca, musicasArtistasClassificados, licenca.getnPreferenciasArtistas()));
-
 		playlist.addAll(gerarMusicasPlaylist(licenca, musicasGenerosClassificados, licenca.getnPreferenciasGeneros()));
 
 		//Caso a playlist não tenha músicas suficientes, vai adicionar mais músicas

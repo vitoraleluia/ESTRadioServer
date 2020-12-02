@@ -23,4 +23,11 @@ public class Simples extends LicencaDefault {
 		return false;
 	}
 
+	@Override
+	public boolean podeDownload(Musica m) {
+		if(m.getNivel() <= super.getNivel())
+			return true;
+
+		return false;
+	}
 }
